@@ -5,8 +5,10 @@ import guru.springframework.sdjpaintro.repositories.BookRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+@Profile({"local", "default"})
 @RequiredArgsConstructor
 @Component
 @Slf4j
@@ -15,6 +17,8 @@ public class DataInitializer implements CommandLineRunner {
     private final BookRepository bookRepository;
     @Override
     public void run(String... args) throws Exception {
+        bookRepository.deleteAll();
+
         Book bookDDD = Book.builder()
                 .title("Domain Driven Design")
                 .isbn("123")
