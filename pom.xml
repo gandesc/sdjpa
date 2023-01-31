@@ -90,7 +90,8 @@
                     <url>jdbc:mysql://localhost:3306/bookdb?useUnicode=true&amp;characterEncoding=UTF-8</url>
                     <username>bookadmin</username>
                     <password>password</password>
-                    <outputChangeLogFile>changelog.xml</outputChangeLogFile>
+                    <outputChangeLogFile>changelog-master.xml</outputChangeLogFile>
+                    <changeLogFile>src/main/resources/db/changelog/changelog-master.xml</changeLogFile>
                     <changeSetAuthor>JT</changeSetAuthor>
                     <changelogSchemaName>bookdb</changelogSchemaName>
                 </configuration>
