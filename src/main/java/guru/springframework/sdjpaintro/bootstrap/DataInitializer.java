@@ -2,8 +2,10 @@ package guru.springframework.sdjpaintro.bootstrap;
 
 import guru.springframework.sdjpaintro.domain.AuthorUuid;
 import guru.springframework.sdjpaintro.domain.Book;
+import guru.springframework.sdjpaintro.domain.BookUuid;
 import guru.springframework.sdjpaintro.repositories.AuthorUuidRepository;
 import guru.springframework.sdjpaintro.repositories.BookRepository;
+import guru.springframework.sdjpaintro.repositories.BookUuidRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -18,6 +20,7 @@ public class DataInitializer implements CommandLineRunner {
 
     private final BookRepository bookRepository;
     private final AuthorUuidRepository authorUuidRepository;
+    private final BookUuidRepository bookUuidRepository;
     @Override
     public void run(String... args) throws Exception {
         bookRepository.deleteAll();
@@ -48,5 +51,13 @@ public class DataInitializer implements CommandLineRunner {
         AuthorUuid savedAuthor = authorUuidRepository.save(authorUuid);
 
         log.info("Saved Author UUID: " + savedAuthor.getId());
+
+        BookUuid bookUuid = BookUuid.builder()
+                .title("All About UUIDs")
+                .build();
+
+        BookUuid savedBook = bookUuidRepository.save(bookUuid);
+
+        log.info("Saved Book UUID: " + savedBook.getId());
     }
 }
