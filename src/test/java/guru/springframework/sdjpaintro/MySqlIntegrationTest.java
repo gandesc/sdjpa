@@ -12,7 +12,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @ActiveProfiles("local")
 @DataJpaTest
-@ComponentScan(basePackages = "guru.springframework.sdjpaintro.bootstrap")
+@ComponentScan(basePackages = {"guru.springframework.sdjpaintro.bootstrap"})
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class MySqlIntegrationTest {
 
@@ -22,7 +22,6 @@ public class MySqlIntegrationTest {
     @Test
     void testMySQL() {
         long countBefore = bookRepository.count();
-
         assertThat(countBefore).isEqualTo(2);
     }
 }

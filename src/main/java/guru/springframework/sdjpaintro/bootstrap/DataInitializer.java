@@ -8,7 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-@Profile({"local", "default"})
+@Profile({"local", "default", "test"})
 @RequiredArgsConstructor
 @Component
 @Slf4j

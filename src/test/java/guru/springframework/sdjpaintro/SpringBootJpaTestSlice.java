@@ -2,6 +2,7 @@ package guru.springframework.sdjpaintro;
 
 import guru.springframework.sdjpaintro.domain.Book;
 import guru.springframework.sdjpaintro.repositories.BookRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -15,18 +16,19 @@ import org.springframework.test.annotation.Commit;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@DataJpaTest
+@DataJpaTest(properties = {"spring.datasource.url=jdbc:h2:mem:testdb2"})
+@Slf4j
 @ComponentScan(basePackages = "guru.springframework.sdjpaintro.bootstrap")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class SprigBootJpaTestSlice {
+public class SpringBootJpaTestSlice {
 
     @Autowired
     BookRepository bookRepository;
 
-    @Order(1)
     @Commit // eq. to @Rollback(value=false)
+    @Order(1)
     @Test
-    void testJpaTestSlice() {
+    void testJpaTestSplice() {
         long countBefore = bookRepository.count();
         assertThat(countBefore).isEqualTo(2);
 
@@ -43,8 +45,9 @@ public class SprigBootJpaTestSlice {
 
     @Order(2)
     @Test
-    void testJpaTestTransactions() {
-        long count = bookRepository.count();
-        assertThat(count).isEqualTo(3);
+    void testJpaTestSpliceTransaction() {
+        long countBefore = bookRepository.count();
+        assertThat(countBefore).isEqualTo(3);
+
     }
 }
