@@ -2,7 +2,6 @@ package guru.springframework.sdjpaintro;
 
 import guru.springframework.sdjpaintro.domain.Book;
 import guru.springframework.sdjpaintro.repositories.BookRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -16,8 +15,7 @@ import org.springframework.test.annotation.Commit;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@DataJpaTest(properties = {"spring.datasource.url=jdbc:h2:mem:testdb2"})
-@Slf4j
+@DataJpaTest
 @ComponentScan(basePackages = "guru.springframework.sdjpaintro.bootstrap")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class SpringBootJpaTestSlice {
